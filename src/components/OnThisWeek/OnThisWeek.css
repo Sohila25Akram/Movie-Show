@@ -1,0 +1,6 @@
+.genre:not(:last-child):after{
+    content: ',';
+}
+.show-details:hover{
+    color: #fbbd61 !important;
+}

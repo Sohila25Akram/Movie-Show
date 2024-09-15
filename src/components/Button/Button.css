@@ -1,0 +1,24 @@
+.post-link::before{
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 100px;
+    left: -22px;
+    bottom: 0;
+    background-color: #ec7532;
+    transform: skewX(30deg);
+    opacity: 0;
+    transition: .4s
+}
+.post-link span{
+    color: #ec7532;
+    position: relative;
+}
+.post-link:hover span{
+    z-index: 1;
+    color: #fff;
+}
+.post-link:hover::before{
+    width: 140%;
+    opacity: 1;
+}

@@ -5,7 +5,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #ffffff;
     --foreground: #ededed;
   }
 }
@@ -38,5 +38,43 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+header{
+  display: flex;
+  justify-content: center;
+}
+.container-x{
+  /* padding-left: 173px; */
+  /* padding-right: 173px; */
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container-y{
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+@media (min-width: 600px){
+  .container-x{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (min-width: 768px){
+  .container-x{
+    width: 750px;
+  }
+}
+@media (min-width: 992px){
+  .container-x{
+    width: 970px;
+  }
+}
+@media (min-width: 1200px){
+  .container-x{
+    width: 1170px;
   }
 }

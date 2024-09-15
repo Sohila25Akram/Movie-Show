@@ -1,0 +1,40 @@
+.card-with-hover::before{
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -100px;
+    width: 0;
+    height: 100%;
+    content: '';
+    transition: .5s;
+    transform: skewX(30deg);
+    opacity: .9;
+    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+}
+.card-with-hover:hover::before{
+    width: 180%;
+    /* width: 140%;
+    height: 260%;
+    background-color: #ec7532;
+    opacity: .8;  */
+    /* transform: rotateZ(45deg) scale(12, 14); */
+}
+/* .card-with-hover::before{
+    content:'';
+    position: absolute;
+    background-color: #ec7532;
+    width: 50%;
+    height: 50%;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+} */
+.play:hover{
+    transform: scale(.9);
+}
+.play:hover svg{
+    color: #fbbd61;
+}
+.play + a:hover{
+    color: #fbbd61 !important;
+}

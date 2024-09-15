@@ -1,0 +1,6 @@
+.genre:not(:last-child):after{
+    content: ',';
+}
+.play-trailer{
+    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+}

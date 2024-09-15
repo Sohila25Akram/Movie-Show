@@ -1,0 +1,31 @@
+.nav-item{
+    position: relative;
+    text-transform: uppercase;
+    transition: .5s all;
+}
+.nav-item::before{
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 0;
+    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+    bottom: -2px;
+    left: 0;
+    transition: .3s ease-in;
+}
+.nav-item:hover.nav-item::before{
+    width: 100%;
+}
+.nav-item:hover{
+    color: #fbbd61;
+}
+
+.section-label::after{
+    content:'';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 125px;
+    height: 4px;
+    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);;
+  }
