@@ -40,7 +40,7 @@ export default function OnThisWeek() {
                     <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
                         <Box sx={{display: 'flex', marginTop: '30px'}}>
                             {step.watchingTimes.map(time => (
-                                <Typography sx={{padding: '7px 10px', margin: '0 5px 5px 0', color: '#717171', backgroundColor: '#d8d8d8', borderRadius: '5px', fontSize: '14px', width: 'fit-content', display: 'inline-block'}}>{time}</Typography>
+                                <Typography sx={{padding: '7px 10px', margin: '0 5px 5px 0', color: '#717171', backgroundColor: '#d8d8d8', borderRadius: '5px', fontSize: '14px', width: 'fit-content', display: 'inline-block', letterSpacing: '0'}}>{time}</Typography>
                             ))}
                         </Box>
                         <Typography sx={{textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '12px'}}>{step.takingTime}</Typography>

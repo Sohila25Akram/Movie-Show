@@ -4,3 +4,9 @@
     color: #fff;
     margin-top: 115px;
 }
+.nav-item::before.active{
+    width: 100%;
+}
+.nav-item.active{
+    color: #fbbd61;
+}

@@ -1,3 +1,6 @@
+.play-trailer{
+    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+}
 .post-link::before{
     content: '';
     position: absolute;
@@ -21,4 +24,8 @@
 .post-link:hover::before{
     width: 140%;
     opacity: 1;
+}
+.post-comment-btn:hover{
+    background-color: #ec7532 !important;
+    color: #fff !important;
 }

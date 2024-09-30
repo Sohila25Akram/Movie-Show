@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
 import { Box, Typography, AppBar, Toolbar, IconButton, List, ListItem, ListItemButton, ListItemText, Drawer } from '@mui/material';
@@ -8,16 +8,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import './Header.css'
 import Tap from '../Tap/Tap';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+// import NavLinks from '../NavLinks/NavLinks';
 
 export const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const tapItems: object = 
     {
-        "Home": "",
-        "What's on": "searchPage",
-        "News": "news",
-        "Contact Us": "contact"
+        "Home": "/",
+        "What's on": "/searchPage",
+        "News": "/news",
+        "Contact Us": "/contact"
     };
+
+    // const router = useRouter();
 
   return (
     <>
@@ -37,11 +41,12 @@ export const Header = () => {
                 {/* <Tap tapItems={tapItems} /> */}
                 <Box sx={{borderBottom: `1px solid rgba(255, 255, 255, .2)`, color: '#fff', display: 'flex', flexWrap: 'wrap'}}>
                     {Object.entries(tapItems).map(([key, value]) => (
-                        <Link href={`/${value}`} key={key} className='nav-item' style={{display: 'inline-block', padding: '20px 24px'}}>
+                        <Link href={value} key={key} style={{display: 'inline-block', padding: '20px 24px'}}>
                             {key}  
                         </Link>
                     ))}
                 </Box>
+                {/* <NavLinks /> */}
             </Box>
             <IconButton edge="start" color="inherit" aria-label="menu" sx={{ display: {xs: "block", sm: "none"}, padding: "0"}} onClick={() => setIsOpen(true)}>
                 {/* <MenuIcon /> */}

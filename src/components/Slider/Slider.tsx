@@ -17,6 +17,7 @@ import { Rating } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Tap from '../Tap/Tap';
+import { PlayTrailerButton } from '../Button/Button';
 
 
 export function SliderBanner() {
@@ -38,11 +39,8 @@ export function SliderBanner() {
 
   return (
     <Box minHeight={'653px'} paddingTop={'114px'} sx={{ flexGrow: 1, position: "relative", padding: {xs: "77px 0 0", sm: "114px 0 0"}, overflow: "hidden", '&::after':{background: 'linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)', content: `''`, width: '100%', height: '100%', position: 'absolute', zIndex: '1', top: '0', left: ''}}}>
-        {/* <Box sx={{background: 'linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)', content: `''`, width: '100%', height: '100%', position: 'absolute', top: '0', left: ''}}></Box> */}
         <Box sx={{position: "absolute", height: "100%", width: "100%", left: "0", top: "0", zIndex: "-1", backgroundImage: `url(${steps[activeStep].imgPath})`, backgroundPosition: 'top center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
-            {/* <img src={steps[activeStep].imgPath} style={{ height: "100%"}} /> */}
         </Box>
-        {/* <Box sx={{background: 'linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%)', content: `''`, width: '100%', height: '100%', position: 'absolute'}}></Box> */}
       <Box className='container-x' sx={{marginTop: '50px !important', minHeight: "248px", position: 'relative', zIndex: '2'}}>
         <Box sx={{textAlign: "left", pl: 2, color: "#fbbd61"}}>
         {steps[activeStep].genre.map(((type, index) => (
@@ -67,9 +65,7 @@ export function SliderBanner() {
         </Box>
         <Box sx={{display: 'flex', alignItems: 'center', gap: 2, pl: 2}}>
             <Typography textAlign='center' sx={{border: "2px solid #fff", borderRadius: "50%", width: '48px', height: '48px', lineHeight: '48px', fontSize: '13px', fontWeight: 'bold'}}>{steps[activeStep].rate}</Typography>
-            <Box className='play-trailer' sx={{padding: "8px 24px", borderRadius: "30px", textTransform: "uppercase", letterSpacing: "3px", height: 'fit-content'}}>
-                Play Trailer
-            </Box>
+            <PlayTrailerButton />
         </Box>
 
         <Box sx={{display: 'flex', gap: '8px', bottom: '-80px', padding: '16px', marginTop: '70px'}}>
@@ -90,19 +86,6 @@ export function SliderBanner() {
         ))}
        </Box>
      </Box>
-      {/* Bullet Indicator */}
-      
-
-      {/* Navigation Buttons */}
-      {/* <Box sx={{display: 'flex', justifyContent: 'space-between', position: 'relative', top: '-100px'}}>
-        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-          <span style={{width: '10px', height: '10px', border: '2px solid #fff', borderRadius: '10px'}}></span>
-        </Button>
-
-        <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-          <span style={{width: '10px', height: '10px', border: '2px solid #fff', borderRadius: '10px'}}></span>
-        </Button>
-      </Box> */}
     </Box>
   );
 }
