@@ -19,7 +19,9 @@
 .nav-item:hover{
     color: #fbbd61;
 }
-
+.nav-item.active::before{
+    width: 100%;
+}
 .section-label::after{
     content:'';
     position: absolute;

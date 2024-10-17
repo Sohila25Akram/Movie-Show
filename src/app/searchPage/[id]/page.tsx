@@ -5,65 +5,103 @@ import Form from '@/components/Form/Form'
 import Tap from '@/components/Tap/Tap'
 import { Box, Rating, Typography } from '@mui/material'
 import React from 'react'
+import { movies } from '@/assets/moviesData'
+import { Movie } from '@/types/movieTypes'
 
-export default function page() {
+interface IProps {
+	params: {
+		id: string;
+        genre: string | string[];
+        label: string,
+        coverImgPath: string
+	}
+}
+
+export default function page({params} : IProps) {
+    const { genre, label, coverImgPath } = params;
+
+    const movie = movies.find(movie => movie.id === params.id)
+
+    // console.log('Params:', movie);
   return (
     <>  
-    <Banner subTitle='thriller, horror' title='locked in' imgBackground='//xenothemes.co.uk/specto/wp-content/uploads/sites/2/2017/11/hero-whatson-1.png'>
+    <Banner subTitle={genre} title={label} imgBackground={coverImgPath}>
         <Typography marginBottom='20px'>
-            Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.
+            {movie?.descriptionOne}
         </Typography>
         <Box sx={{display: 'flex', alignItems: 'center', gap: 2}}>
-            <Typography textAlign='center' sx={{border: "2px solid #fff", borderRadius: "50%", width: '48px', height: '48px', lineHeight: '48px', fontSize: '13px', fontWeight: 'bold'}}>18</Typography>
+            <Typography textAlign='center' sx={{border: "2px solid #fff", borderRadius: "50%", width: '48px', height: '48px', lineHeight: '48px', fontSize: '13px', fontWeight: 'bold'}}>{movie?.certificateAge}</Typography>
             <PlayTrailerButton />
-            <Rating name="half-rating-read" value={2.5} defaultValue={2.5} precision={0.5} size='small' readOnly />
+            <Rating name="half-rating-read" value={movie?.rating} defaultValue={2.5} precision={0.1} size='small' readOnly />
         </Box>
     </Banner>
     <div className='container-x container-y'>
         <Box sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}}}>
-            <Box flexGrow={1}>
+            <Box width={'65%'}>
                 <Tap tapItems='synopsis' ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <Box sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}, alignItems: 'flex-start'}}>
                     <Box borderRadius='10px' overflow='hidden' minWidth='178px'>
-                        <img src="//xenothemes.co.uk/specto/wp-content/uploads/sites/2/2017/07/movie-7.jpg" alt='' style={{display: 'block', width: '100%'}}/>
+                        <img src={movie?.coverImgPath} alt='' style={{display: 'block', width: '100%'}}/>
                     </Box>
                     <Box>
-                        <Typography variant='h3' fontSize='24px' color='#101010' letterSpacing='1px' marginBottom='10px'>The plot</Typography>
+                        <Typography variant='h3' fontSize='24px' color='#101010' letterSpacing='1px' marginBottom='10px'>{movie?.label}</Typography>
                         <Typography color='#717171' marginBottom='20px'>
-                            Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatemdolore eu feugiat nulla facilisisat vero eros et accumsan et iusto odio dignissimqui blandit praesen.
+                            {movie?.descriptionOne}
                         </Typography>
                         <Typography color='#717171' marginBottom='20px'>
-                            Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+                            {movie?.descriptionTwo}
                         </Typography>
                         <ul style={{margin:'25px 0', color:'#717171', display: 'flex', flexDirection: 'column', listStyle: 'none'}}>
-                            <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
-                                <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>director</span><span>hiohoi ijio</span>
-                            </li>
-                            <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
-                                <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>director</span><span>hiohoi ijio</span>
-                            </li>
-                            <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
-                                <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a',  display: 'inline-block', width: '115px'}}>director</span><span>hiohoi ijio</span>
-                            </li>
+                            {(movie?.director) &&
+                                <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
+                                    <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>director</span><span>{movie.director}</span>
+                                </li>
+                            }
+                            {(movie?.starring) &&
+                                <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
+                                    <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>starring</span><span>{movie.starring}</span>
+                                </li>
+                            }
+                            {(movie?.releasedDate) &&
+                                <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
+                                    <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>released</span><span>{movie.releasedDate}</span>
+                                </li>
+                            }
+                            {(movie?.runningTime) &&
+                                <li style={{marginBottom: '10px', fontSize: '12px', width:'100%'}}>
+                                    <span style={{textTransform: 'uppercase', letterSpacing: '1.5px', color:'#4a4a4a', display: 'inline-block', width: '115px'}}>running time</span><span>{movie.runningTime}</span>
+                                </li>
+                            }
                         </ul>
                     </Box>
                 </Box>
             </Box>
-            <Box minWidth='250px' sx={{ width: {xs: '100%', md: '323px', lg: '360px'}}}>
+            <Box minWidth='250px' flexGrow={1}>
                 <Tap tapItems='viewing times' ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <ul style={{paddingLeft: '40px', listStyle: 'none', color: '#4a4a4a', display: 'flex', flexDirection: 'column'}}>
-                    <li style={{marginBottom: '10px', display: 'inline-block'}}><span style={{letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '12px'}}>monday</span> <Typography sx={{padding: '7px 10px', margin: '0 5px 5px 0', color: '#717171', backgroundColor: '#d8d8d8', borderRadius: '5px', fontSize: '14px', width: 'fit-content', display: 'inline-block', letterSpacing: '0'}}>30:00 pm</Typography></li>
-                    <li style={{marginBottom: '10px', display: 'inline-block'}}><span style={{letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '12px'}}>saterday</span></li>
+                    {movie?.watchingTimes.map((watchingTime, index) => (
+                        <li key={index} style={{marginBottom: '10px', display: 'flex', gap: '15px'}}>
+                            <span style={{letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '12px'}}>{watchingTime.day}</span>
+                            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                {watchingTime.times.map((time, timeIndex) => (
+                                    <Typography key={timeIndex} sx={{minWidth: 'fit-content' , padding: '7px 10px', margin: '0 5px 5px 0', color: '#717171', backgroundColor: '#d8d8d8', borderRadius: '5px', fontSize: '14px', width: 'fit-content', display: 'inline-block', letterSpacing: '0'}}>{time}</Typography>
+                                ))}
+                            </div>
+                        </li>
+                    ))}
+                    
+                    
+                    {/* <li style={{marginBottom: '10px', display: 'inline-block'}}><span style={{letterSpacing: '1.5px', textTransform: 'uppercase', fontSize: '12px'}}>saterday</span></li> */}
                 </ul>
             </Box>
         </Box>
         <Box  sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}}}>
-            <Box>
+            <Box width={'65%'}>
                 <Tap tapItems='comments'  ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <Comment ourBackground='#fff' ourTransform='0' ourPadding='0 0' />
                 <Comment ourBackground='#fff' ourTransform='0' ourPadding='0 0' />
             </Box>
-            <Box minWidth='250px'>
+            <Box minWidth='250px' flexGrow={1}>
                 <Tap tapItems='leave a comment'  ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <Form />
             </Box>

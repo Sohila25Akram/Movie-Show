@@ -5,13 +5,13 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import './HoverMoviePhoto.css'
 import { PlayButton } from '../Button/Button';
 
-export default function HoverMoviePhoto({ourWidth='fit-content'}: {ourWidth?: string}) {
+export default function HoverMoviePhoto({ourWidth='fit-content', imgPath='https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60'}: {ourWidth?: string, imgPath?: string}) {
   return (
     <Box className='card-with-hover' width={ourWidth} textAlign='center' sx={{margin: '0 auto', position: "relative", overflow: "hidden", borderRadius: "10px", mb: "20px", display:"flex", justifyContent:"center", '&:hover .figure-caption': {opacity: '1'}}}>
         <CardMedia
           // className="card-with-hover"
           component="img"
-          image="https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+          image={imgPath}
           alt="green iguana"
           sx={{minHeight: "257px"}}
         />

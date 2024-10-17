@@ -6,15 +6,15 @@ import { Box } from '@mui/material';
 
 export function PlayTrailerButton() {
   return(
-    <Box className='play-trailer' sx={{padding: "8px 24px", borderRadius: "30px", textTransform: "uppercase", letterSpacing: "3px", height: 'fit-content', width: 'fit-content', background: "linear-gradient(to right, #ec7532 0%, #fbbd61 100%)"}}>
+    <Box className='play-trailer' sx={{padding: "8px 24px", borderRadius: "30px", textTransform: "uppercase", letterSpacing: "3px", height: 'fit-content', width: 'fit-content', background: "linear-gradient(to right, #ec7532 0%, #fbbd61 100%)", cursor: 'pointer'}}>
       Play Trailer
     </Box>
   )
 }
 
-export function ButtonTransition() {
+export function ButtonTransition({postSlug}: {postSlug: string}) {
   return (
-    <Link className='post-link' href='/news' style={{outline: 'none', textTransform: 'uppercase', backgroundColor: '#fff', border: '2px solid #ec7532', borderRadius: '30px', padding: '12px 24px', fontSize: '13px', letterSpacing: '4px',cursor: 'pointer', position: 'relative', overflow: 'hidden', display: 'inline-block', transition: 'all 300ms ease-in-out'}}>
+    <Link className='post-link' href={`/news/${postSlug}`} style={{outline: 'none', textTransform: 'uppercase', backgroundColor: '#fff', border: '2px solid #ec7532', borderRadius: '30px', padding: '12px 24px', fontSize: '13px', letterSpacing: '4px',cursor: 'pointer', position: 'relative', overflow: 'hidden', display: 'inline-block', transition: 'all 300ms ease-in-out'}}>
         <span>read full post</span>
     </Link>
   )
