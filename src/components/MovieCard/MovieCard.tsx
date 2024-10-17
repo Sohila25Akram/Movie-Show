@@ -1,9 +1,7 @@
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Stack, Rating, Box, Link } from '@mui/material';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { Stack, Rating } from '@mui/material';
 import HoverMoviePhoto from '../HoverMoviePhoto/HoverMoviePhoto';
 
 export default function MovieCard() {

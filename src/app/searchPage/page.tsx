@@ -1,17 +1,9 @@
 "use client"
 
-import { Box, Input, OutlinedInput, Typography } from '@mui/material'
+import { Box, OutlinedInput } from '@mui/material'
 import Banner from '../../components/Banner/Banner'
-import Tap from '../../components/Tap/Tap'
 import OnThisWeek from '../../components/OnThisWeek/OnThisWeek';
 import Help from '../../components/Help/Help';
-
-const tapItems = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-const currentDate = new Date().toLocaleDateString('en-US', {
-  weekday: 'short',
-  day: 'numeric',
-  month: 'long',
-});
 
 export default function SearchPage() {
   return (

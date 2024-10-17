@@ -1,6 +1,5 @@
-import { Button, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material'
+import { Button, List, Typography } from '@mui/material'
 import './Tap.css'
-import Link from 'next/link'
 
 const currentWeekDay = new Date().toLocaleDateString('en-US', { weekday: 'short' })
 

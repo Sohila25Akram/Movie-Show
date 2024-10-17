@@ -9,7 +9,7 @@ export const movies = [
       focusing on the struggles of a single man caught in a battle with darkness. The powerful storyline
       is filled with twists and turns, showcasing how far someone can go when they are pushed beyond their limits.
       It is a tale of perseverance, fear, and ultimately, redemption.`,
-    coverImgPath: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+    coverImgPath: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=400&h=250',
     genre: ['Fantasy', 'Sci-fi', 'Action'],
     rate: 'PG',
     rating: 5,

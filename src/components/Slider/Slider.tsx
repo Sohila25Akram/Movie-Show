@@ -2,13 +2,8 @@
 
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
-import MobileStepper from '@mui/material/MobileStepper';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import './Slider.css';
 import MovieCard from '../MovieCard/MovieCard';
 import { movies } from '@/assets/moviesData';
@@ -18,20 +13,11 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Tap from '../Tap/Tap';
 import { PlayTrailerButton } from '../Button/Button';
+import Image from 'next/image';
 
 
 export function SliderBanner() {
-  const theme = useTheme();
   const [activeStep, setActiveStep] = React.useState(0);
-  const moviesNum = movies.length;
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
   const handleStepChange = (step: number) => {
     setActiveStep(step);
@@ -131,7 +117,7 @@ export function SliderComingSoon(){
             (
               <Box sx={{padding: '40px 0', display: 'flex', flexDirection: 'column-reverse',  [`@media (min-width: 600px)`]: {flexDirection: 'row-reverse', justifyContent: 'space-between', alignItems: 'center', gap: '30px'}}}>
                 <Box sx={{width: '100%', [`@media (min-width: 600px)`]: {width: '50%'}, overflow: 'hidden'}}>
-                  <img src={currentMovie.coverImgPath} alt={currentMovie.label} style={{ width: '100%' }} />
+                  <Image src={currentMovie.coverImgPath} alt={currentMovie.label} width={100} height={100} layout='responsive' />
                 </Box>
                 <Box textAlign={'left'} sx={{width: '50%', minWidth: '260px', paddingBottom: '40px', [`@media (min-width: 600px)`]: {paddingBottom: '0'}}}>
                   {currentMovie.genre.map(((type, index) => (

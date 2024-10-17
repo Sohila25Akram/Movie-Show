@@ -1,6 +1,5 @@
 import Comment from '@/components/Comment/Comment'
 import Form from '@/components/Form/Form'
-import Post from '@/components/Post/Post'
 import Tap from '@/components/Tap/Tap'
 import { Box, Typography } from '@mui/material'
 import React from 'react'

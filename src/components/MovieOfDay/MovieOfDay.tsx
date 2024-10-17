@@ -4,12 +4,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import type { Movie } from '@/types/movieTypes';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function MovieOfDay({movie}: Movie) {
   return (
     <Box color={'#717171'} sx={{display: 'flex', flexDirection: 'column', [`@media (min-width: 768px)`]: {flexDirection: 'row', alignItems: 'center'}, gap: '30px', borderTop: '1px solid #d8d8d8', marginBottom: '40px', paddingTop: '40px'}} key={movie.id}>
-        <Box sx={{borderRadius: '10px', overflow: 'hidden', [`@media (min-width: 768px)`]: {minWidth: '165px'}}}>
-            <img src={movie.coverImgPath} alt='movie' style={{maxWidth: '100%', display: 'block'}} />
+        <Box sx={{borderRadius: '10px', overflow: 'hidden', [`@media (min-width: 768px)`]: {minWidth: '215px'}}}>
+            <Image src={movie.coverImgPath} alt='movie' width={265} height={100} layout="responsive" style={{ display: 'block'}} />
             {/* https://xenothemes.co.uk/specto/wp-content/uploads/sites/2/2017/11/thumb2-270x340.jpg */}
         </Box>
         <Box textAlign={'left'}>

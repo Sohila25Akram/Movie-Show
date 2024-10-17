@@ -1,4 +1,4 @@
-import { Box, Input, TextField, Typography } from '@mui/material'
+import { Box, TextField, Typography } from '@mui/material'
 import Tap from '../Tap/Tap'
 
 const tagsList = ['tag 1', 'tag 1', 'tag 1', 'tag 1', 'tag 1', 'tag 1']

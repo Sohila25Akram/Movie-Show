@@ -1,8 +1,5 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import { NewInSlider, SliderBanner, SliderComingSoon } from '@/components/Slider/Slider'
-import { Box, Typography } from '@mui/material'
-import Tap from '@/components/Tap/Tap'
+import { Box } from '@mui/material'
 import OnThisWeek from '@/components/OnThisWeek/OnThisWeek'
 import Help from '@/components/Help/Help'
 

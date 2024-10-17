@@ -6,7 +6,7 @@ import Tap from '@/components/Tap/Tap'
 import { Box, Rating, Typography } from '@mui/material'
 import React from 'react'
 import { movies } from '@/assets/moviesData'
-import { Movie } from '@/types/movieTypes'
+import Image from 'next/image'
 
 interface IProps {
 	params: {
@@ -37,11 +37,11 @@ export default function page({params} : IProps) {
     </Banner>
     <div className='container-x container-y'>
         <Box sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}}}>
-            <Box width={'65%'}>
+            <Box minWidth={'65%'} width={'100%'}>
                 <Tap tapItems='synopsis' ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <Box sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}, alignItems: 'flex-start'}}>
                     <Box borderRadius='10px' overflow='hidden' minWidth='178px'>
-                        <img src={movie?.coverImgPath} alt='' style={{display: 'block', width: '100%'}}/>
+                        <Image src={`${movie?.coverImgPath}`} alt='' width={100} height={100} layout='responsive' style={{display: 'block'}}/>
                     </Box>
                     <Box>
                         <Typography variant='h3' fontSize='24px' color='#101010' letterSpacing='1px' marginBottom='10px'>{movie?.label}</Typography>
@@ -96,7 +96,7 @@ export default function page({params} : IProps) {
             </Box>
         </Box>
         <Box  sx={{[`@media (min-width: 768px)`]:{ display: 'flex', gap: '30px'}}}>
-            <Box width={'65%'}>
+            <Box minWidth={'65%'} width={'100%'}>
                 <Tap tapItems='comments'  ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
                 <Comment ourBackground='#fff' ourTransform='0' ourPadding='0 0' />
                 <Comment ourBackground='#fff' ourTransform='0' ourPadding='0 0' />

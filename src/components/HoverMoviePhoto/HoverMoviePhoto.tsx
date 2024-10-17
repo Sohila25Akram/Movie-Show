@@ -1,7 +1,6 @@
 import { Box, CardMedia, Typography } from '@mui/material'
 import Link from 'next/link'
 import React from 'react'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import './HoverMoviePhoto.css'
 import { PlayButton } from '../Button/Button';
 

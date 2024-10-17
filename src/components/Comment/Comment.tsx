@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import Image from 'next/image';
 import React from 'react'
 
 type IProps = {
@@ -11,7 +12,7 @@ export default function Comment({ourBackground= '#f3f3f3', ourTransform = '50%',
   return (
     <Box margin='0 0 35px -15px' padding={ourPadding} display={'flex'} gap='30px' sx={{backgroundColor: ourBackground, boxShadow: 'inset 50px 0 0 #fff'}}>
         <Box width='70px' minWidth={'70px'} height='70px' borderRadius='50%' overflow='hidden' sx={{outline: '5px solid #fff', transform: `translateY(${ourTransform})`}}>
-            <img src="https://secure.gravatar.com/avatar/69d73d86883fb4d433a1df2e89776b84?s=70&d=mm&r=g" />
+            <Image src="https://secure.gravatar.com/avatar/69d73d86883fb4d433a1df2e89776b84?s=70&d=mm&r=g" width={70} height={70} alt="user" />
         </Box>
         <Box  paddingLeft='15px'>
             <Typography fontSize='12px' color='#ec7532' letterSpacing='1.5px' textTransform='uppercase'>november 2390</Typography>

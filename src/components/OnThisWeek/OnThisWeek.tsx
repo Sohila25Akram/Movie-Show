@@ -1,14 +1,11 @@
 "use client";
 
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { movies } from '../../assets/moviesData'
 import './OnThisWeek.css'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import Tap from '../Tap/Tap';
 import MovieOfDay from '../MovieOfDay/MovieOfDay';
-import type { Movie } from '@/types/movieTypes';
 
 const tapItems = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const currentDate = new Date().toLocaleDateString('en-US', {
@@ -38,7 +35,7 @@ export default function OnThisWeek() {
             <Typography fontSize={'14px'} color={'#717171'} sx={{textTransform: 'uppercase', position: 'absolute', bottom: '-30px', right: '0' , [`@media (min-width: 768px)`]: {position: 'static'}}}>{currentDate}</Typography>
         </Box>
         {filteredMovies.map((movie) => (
-            <MovieOfDay movie={movie} />
+            <MovieOfDay key={movie.id} movie={movie} />
         ))}
     </>
   )
