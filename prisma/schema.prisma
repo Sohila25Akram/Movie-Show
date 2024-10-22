@@ -1,0 +1,58 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id                    String    @id @default(auto()) @map("_id") @db.ObjectId
+  label                 String
+  descriptionOne        String
+  descriptionTwo        String
+  coverImgPath          String
+  genre                 String[]
+  rate                  String
+  rating                Float
+  videoPathOnYoutube    String
+  watchingTimes         WatchingTime[]
+  runningTime           String
+  state                 String
+  productionDate        String
+  director              String
+  certificateAge        String
+  releasedDate          String
+  starring              String[]
+  comments              Comment[]
+}
+
+model WatchingTime{
+    id      String   @id @default(auto()) @map("_id") @db.ObjectId
+    day     String
+    times   String[]
+    movie   Movie?    @relation(fields: [movieId], references: [id])
+    movieId String   @db.ObjectId
+}
+
+model Post{
+    id              String  @id @default(auto()) @map("_id") @db.ObjectId
+    slug            String  @unique
+    categories      String[]
+    title           String
+    descriptionOne  String
+    descriptionTwo  String
+    postImgPath     String
+    tags            String[]
+    publishedData   DateTime @default(now())
+    comments        Comment[]
+}
+
+model Comment{
+    id              String  @id @default(auto()) @map("_id") @db.ObjectId
+    userName        String
+    email           String
+    description     String
+    publishedDate   DateTime @default(now())
+    post            Post?    @relation(fields: [postId], references: [id])
+    postId          String?  @db.ObjectId
+    movie           Movie?   @relation(fields: [movieId], references: [id])
+    movieId         String?  @db.ObjectId
+}
