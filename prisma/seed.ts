@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import {movies} from '../src/assets/moviesData'
 import {posts} from '../src/assets/postsData'
-import { watch } from 'fs';
 
 const prisma = new PrismaClient()
 
