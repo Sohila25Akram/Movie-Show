@@ -3,8 +3,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
 model Movie {
-  id                    String    @id @map("_id") @db.ObjectId
+  id                    String    @id @map("_id")
   label                 String
   descriptionOne        String
   descriptionTwo        String
@@ -13,7 +17,7 @@ model Movie {
   rate                  String
   rating                Float
   videoPathOnYoutube    String
-  watchingTimes         WatchingTime[]
+  watchingTimes         WatchingTime[]  @relation("MovieWatchingTimes")
   runningTime           String
   state                 String
   productionDate        String
@@ -28,8 +32,8 @@ model WatchingTime{
     id      String   @id @default(auto()) @map("_id") @db.ObjectId
     day     String
     times   String[]
-    movie   Movie?    @relation(fields: [movieId], references: [id])
-    movieId String   @db.ObjectId
+    movie   Movie?    @relation("MovieWatchingTimes", fields: [movieId], references: [id])
+    movieId String
 }
 
 model Post{
@@ -54,5 +58,5 @@ model Comment{
     post            Post?    @relation(fields: [postId], references: [id])
     postId          String?  @db.ObjectId
     movie           Movie?   @relation(fields: [movieId], references: [id])
-    movieId         String?  @db.ObjectId
+    movieId         String?
 }
