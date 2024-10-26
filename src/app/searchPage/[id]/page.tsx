@@ -7,7 +7,6 @@ import Form from '@/components/Form/Form'
 import Tap from '@/components/Tap/Tap'
 import { Box, Rating, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
-import { movies } from '@/assets/moviesData'
 import Image from 'next/image'
 import { Movie } from '@/types/movieTypes';
 
