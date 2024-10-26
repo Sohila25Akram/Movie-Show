@@ -5,7 +5,7 @@ import HoverMoviePhoto from '../HoverMoviePhoto/HoverMoviePhoto'
 import Tap from '../Tap/Tap'
 import type { Post } from '@/types/postTypes'
 
-export default function Post({post}: Post) {
+export default function Post({post}: {post: Post}) {
   return (
     <Box marginBottom='50px' paddingBottom='50px' borderBottom={'1px solid #d8d8d8'}>
         <Box maxHeight={'304px'} overflow='hidden' borderRadius='10px'>
