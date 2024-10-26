@@ -1,12 +1,15 @@
+'use client';
+
 import Banner from '@/components/Banner/Banner'
 import { PlayTrailerButton } from '@/components/Button/Button'
 import Comment from '@/components/Comment/Comment'
 import Form from '@/components/Form/Form'
 import Tap from '@/components/Tap/Tap'
 import { Box, Rating, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { movies } from '@/assets/moviesData'
 import Image from 'next/image'
+import { Movie } from '@/types/movieTypes';
 
 interface IProps {
 	params: {
@@ -18,11 +21,31 @@ interface IProps {
 }
 
 export default function page({params} : IProps) {
+    const [movie, setMovie] = useState<Movie | null>(null)
     const { genre, label, coverImgPath } = params;
 
-    const movie = movies.find(movie => movie.id === params.id)
+    const fetchMovieDetails = async () => {
+        try{
+            const response = await fetch(`http://localhost:3000/api/movies/${params.id}`);
+            const data = await response.json();
+            setMovie(data)
+        }catch{
 
-    // console.log('Params:', movie);
+        }
+    }
+
+    useEffect(() => {
+        fetchMovieDetails();
+    }, [params.id])
+
+    if (!movie) {
+        return (
+          <Box sx={{ width: '100%', textAlign: 'center', padding: '50px' }}>
+            <Typography variant="h4">Movie not found</Typography>
+          </Box>
+        );
+    }
+
   return (
     <>  
     <Banner subTitle={genre} title={label} imgBackground={coverImgPath}>

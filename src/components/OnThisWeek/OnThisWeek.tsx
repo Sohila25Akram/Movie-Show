@@ -1,8 +1,7 @@
 "use client";
 
 import { Box, Typography } from '@mui/material'
-import React, { useState } from 'react'
-import { movies } from '../../assets/moviesData'
+import React, { useEffect, useState } from 'react'
 import './OnThisWeek.css'
 import Tap from '../Tap/Tap';
 import MovieOfDay from '../MovieOfDay/MovieOfDay';
@@ -17,10 +16,25 @@ const currentDate = new Date().toLocaleDateString('en-US', {
 
 export default function OnThisWeek() {
     const [selectedDay, setSelectedDay] = useState('mon');
+    const [movies, setMovies] = useState([])
 
     const handleSelectedDay = (day: string) => {
         setSelectedDay(day);
     }
+
+    const fetchMovies = async () => {
+      try{
+        const response = await fetch('http://localhost:3000/api/movies');
+        const data = await response.json();
+        setMovies(data);
+      }catch{
+
+      }
+    }
+
+    useEffect(() => {
+      fetchMovies();
+    }, [])
 
     const filteredMovies = movies.filter((movie) =>
         movie.watchingTimes.some((watchTime) => {
@@ -28,6 +42,7 @@ export default function OnThisWeek() {
           return dayAbbreviation === selectedDay;
         })
       );
+
   return (
     <>
         <Box color={'#4a4a4a'} position='relative' sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>

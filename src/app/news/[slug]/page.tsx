@@ -1,12 +1,14 @@
+'use client'
+
 import Comment from '@/components/Comment/Comment'
 import Form from '@/components/Form/Form'
 import Tap from '@/components/Tap/Tap'
 import { Box, Typography } from '@mui/material'
-import React from 'react'
-import { posts } from '@/assets/postsData'
+import React, { useEffect, useState } from 'react'
 import HoverMoviePhoto from '@/components/HoverMoviePhoto/HoverMoviePhoto'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Link from 'next/link'
+import { Post } from '@/types/postTypes'
 
 interface IProps {
 	params: {
@@ -16,10 +18,22 @@ interface IProps {
 }
 
 export default function page({params}: IProps) {
-
+  const [post , setPost] = useState<Post | null>(null)
   console.log('params.slug:', params.slug);
 
-  const post = posts.find(post => post.slug === params.slug)
+  const fetchPostDetails = async () => {
+    try{
+      const response = await fetch(`http://localhost:3000/api/posts/${params.slug}`)
+      const data = await response.json();
+      setPost(data);
+    }catch{
+
+    }
+  }
+
+  useEffect(() => {
+    fetchPostDetails();
+  }, [params.slug])
 
   if (!post) {
     return (
