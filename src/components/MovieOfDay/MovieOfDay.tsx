@@ -6,7 +6,7 @@ import type { Movie } from '@/types/movieTypes';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function MovieOfDay({movie}: Movie) {
+export default function MovieOfDay({movie}: {movie: Movie}) {
   return (
     <Box color={'#717171'} sx={{display: 'flex', flexDirection: 'column', [`@media (min-width: 768px)`]: {flexDirection: 'row', alignItems: 'center'}, gap: '30px', borderTop: '1px solid #d8d8d8', marginBottom: '40px', paddingTop: '40px'}} key={movie.id}>
         <Box sx={{borderRadius: '10px', overflow: 'hidden', [`@media (min-width: 768px)`]: {minWidth: '215px'}}}>

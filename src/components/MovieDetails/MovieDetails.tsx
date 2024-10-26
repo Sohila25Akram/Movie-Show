@@ -21,7 +21,6 @@ interface IProps {
 
 export default function MovieDetails({params}: IProps) {
     const [movie, setMovie] = useState<Movie | null>(null)
-    const { genre, label, coverImgPath } = params;
 
     const fetchMovieDetails = async () => {
         try{
@@ -46,7 +45,7 @@ export default function MovieDetails({params}: IProps) {
     }
   return (
     <>
-        <Banner subTitle={genre} title={label} imgBackground={coverImgPath}>
+        <Banner subTitle={movie.genre} title={movie.label} imgBackground={movie.coverImgPath}>
             <Typography marginBottom='20px'>
                 {movie?.descriptionOne}
             </Typography>
