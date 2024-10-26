@@ -1,5 +1,4 @@
 import { Box } from '@mui/material'
-import Post from '@/components/Post/Post'
 import PostsList from '@/components/PostsList/PostsList';
 
 export default function News() {
