@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { Input, Label, TextArea } from '../Input/Input';
+import { Label } from '../Input/Input';
 import { PostCommentButton } from '../Button/Button';
 
 interface IFormInput {
