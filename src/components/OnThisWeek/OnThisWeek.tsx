@@ -25,7 +25,7 @@ export default function OnThisWeek() {
 
     const fetchMovies = async () => {
       try{
-        const response = await fetch('http://localhost:3000/api/movies');
+        const response = await fetch('/api/movies');
         const data = await response.json();
         setMovies(data);
       }catch{

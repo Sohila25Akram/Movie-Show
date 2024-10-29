@@ -10,6 +10,7 @@ export async function GET(request: Request, {params}: {params: {id: string}}){
             where : {id},
             include: {
                 watchingTimes: true,
+                comments: true
             },
         })
         if (!movie) {

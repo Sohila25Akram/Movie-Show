@@ -1,7 +1,4 @@
-'use client';
-
 import { Box, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react'
 import HoverMoviePhoto from '../HoverMoviePhoto/HoverMoviePhoto';
 import { Post } from '@/types/postTypes';
 import Tap from '../Tap/Tap';
@@ -17,30 +14,19 @@ interface IProps {
 	}
 }
 
-export default function PostDetails({params}: IProps) {
-    const [post , setPost] = useState<Post | null>(null)
-
-    const fetchPostDetails = async () => {
-        try{
-          const response = await fetch(`http://localhost:3000/api/posts/${params.slug}`)
-          const data = await response.json();
-          setPost(data);
-        }catch{
-    
-        }
-      }
-    
-      useEffect(() => {
-        fetchPostDetails();
-      }, [params.slug])
-    
-      if (!post) {
-        return (
-          <Box sx={{ width: '100%', textAlign: 'center', padding: '50px' }}>
-            <Typography variant="h4">Post not found</Typography>
-          </Box>
-        );
-      }
+export default async function PostDetails({params}: IProps) {
+  
+       
+  const post: Post = await fetch(`http://localhost:3000/api/posts/${params.slug}`)
+  .then(res => res.json());
+       
+  if (!post) {
+    return (
+      <Box sx={{ width: '100%', textAlign: 'center', padding: '50px' }}>
+        <Typography variant="h4">Post not found</Typography>
+      </Box>
+    );
+  }
 
   return (
     <>

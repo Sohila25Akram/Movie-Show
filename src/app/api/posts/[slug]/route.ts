@@ -7,7 +7,10 @@ export async function GET(request: Request, {params}: {params: {slug: string}}){
     const {slug} = params;
     try{
         const post = await prisma.post.findUnique({
-            where : {slug}
+            where : {slug},
+            include: {
+                comments: true,
+            }
         })
         if (!post) {
             return NextResponse.json({ error: 'Movie not found' }, { status: 404 });

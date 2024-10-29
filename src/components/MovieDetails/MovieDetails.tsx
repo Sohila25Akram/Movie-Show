@@ -1,7 +1,4 @@
-'use client';
-
 import { Movie } from "@/types/movieTypes";
-import { useEffect, useState } from "react";
 import Banner from "../Banner/Banner";
 import { Box, Rating, Typography } from "@mui/material";
 import { PlayTrailerButton } from '@/components/Button/Button'
@@ -19,22 +16,11 @@ interface IProps {
 	}
 }
 
-export default function MovieDetails({params}: IProps) {
-    const [movie, setMovie] = useState<Movie | null>(null)
+export default async function MovieDetails({params}: IProps) {
 
-    const fetchMovieDetails = async () => {
-        try{
-            const response = await fetch(`http://localhost:3000/api/movies/${params.id}`);
-            const data = await response.json();
-            setMovie(data)
-        }catch{
+    const movie: Movie = await fetch(`http://localhost:3000/api/movies/${params.id}`)
+    .then(res => res.json());
 
-        }
-    }
-
-    useEffect(() => {
-        fetchMovieDetails();
-    }, [params.id])
 
     if (!movie) {
         return (
@@ -123,7 +109,7 @@ export default function MovieDetails({params}: IProps) {
                 </Box>
                 <Box minWidth='250px' flexGrow={1}>
                     <Tap tapItems='leave a comment'  ourColor='#ec7532' ourMargin='0 0 40px' ourBorderColor='#d8d8d8' />
-                    <Form />
+                    <Form movieId={movie.id}/>
                 </Box>
             </Box>
         </div>

@@ -1,5 +1,3 @@
-"use client"
-
 import { Box, OutlinedInput } from '@mui/material'
 import Banner from '../../components/Banner/Banner'
 import OnThisWeek from '../../components/OnThisWeek/OnThisWeek';

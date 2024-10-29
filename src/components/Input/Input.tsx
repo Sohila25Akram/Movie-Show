@@ -4,14 +4,15 @@ import React, { ReactNode } from 'react'
 import { useForm } from 'react-hook-form'
 import './Input.css'
 
-// interface IFormInput {
-//     name: string
-//     email: string
-//     comment: string
-// }
+interface IFormInput {
+  userName: string
+  email: string
+  description: string
+  movieId?: string
+}
 
-export function Input({role}: {role: string}) {
-    const { register } = useForm()
+export function Input({role}: { role: keyof IFormInput }) {
+    const { register } = useForm<IFormInput>()
   return (
     <input className='custom-input'
         type='text'
@@ -28,7 +29,7 @@ export function Input({role}: {role: string}) {
   )
 }
 
-export function TextArea({role}: {role: string}) {
+export function TextArea({role}: { role: keyof IFormInput }) {
     const { register } = useForm()
     return (
       <input
